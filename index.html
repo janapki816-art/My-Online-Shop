@@ -1,161 +1,263 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-      <h1 class="title">Hello World!</h1>
-      <p id="currentTime"></p>
-      <script src="script.js"></script>
-  </body>
-</html>
+<html lan
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>My Online Shop</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#15352f}
-header{background:#063d32;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.logo{font-size:21px;font-weight:bold}
-header a{color:white;text-decoration:none;margin:5px}
-input,button{padding:11px;border-radius:7px;border:1px solid #ddd}
-button{background:#009967;color:white;border:0;font-weight:bold;cursor:pointer}
-.hero{min-height:350px;padding:35px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#e5f6ed;flex-wrap:wrap}
-.heroText{flex:1;min-width:230px}
-.hero h1{font-size:clamp(32px,5vw,52px);margin:10px 0}
-.hero p{font-size:18px}
-.hero img{width:100%;max-width:390px;height:300px;object-fit:cover;border-radius:18px}
-.wrap{padding:22px 5%;max-width:1200px;margin:auto}
-.search{width:100%;margin:10px 0 20px}
-.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
-.cat,.card{border-radius:12px;padding:14px;background:#f4faf6;text-align:center}
-.cat{cursor:pointer;font-weight:bold}
-.card{background:white;box-shadow:0 2px 12px #0001;text-align:left}
-.emoji{height:100px;display:grid;place-items:center;background:#f0f5f2;border-radius:9px;font-size:53px}
-.card h3{font-size:16px}
-.price{color:#00865a;font-size:18px;font-weight:bold}
-.card button{width:100%}
-#cart{background:#eff9f3;border-radius:12px;padding:18px;margin-top:20px}
-section{scroll-margin-top:15px}
-.about{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.about img{width:100%;max-width:420px;border-radius:14px}
-.about div{flex:1;min-width:220px}
-.contact{padding:25px;background:#e7f8ee;border-radius:12px;text-align:center}
-footer{background:#063d32;color:white;padding:24px;text-align:center}
+body{margin:0;font-family:Arial,sans-serif;color:#26372e;background:#fff}
+header{padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold;color:#176b50}
+input{padding:12px;border:1px solid #ddd;border-radius:25px;min-width:0}
+button,.btn{border:0;border-radius:25px;padding:12px 18px;background:#176b50;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+nav{padding:13px;text-align:center;border-top:1px solid #eee;border-bottom:1px solid #eee}
+nav a{margin:0 10px;text-decoration:none;color:#333;font-size:14px}
+.hero{margin:20px auto;width:92%;max-width:1200px;border-radius:20px;overflow:hidden;background:#edf7ef;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.hero-text{padding:35px}
+.hero h1{font-size:clamp(28px,4vw,48px);color:#176b50}
+.hero p{line-height:1.8;color:#59685e}
+.hero img{width:100%;height:390px;object-fit:cover;object-position:center 25%}
+section{padding:25px 5%}
+h2{margin-top:0}
+.categories,.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.category{background:#edf7ef;text-align:center;padding:23px 8px;border-radius:15px;cursor:pointer}
+.category span{display:block;font-size:30px;margin-bottom:10px}
+.product{border:1px solid #eee;border-radius:15px;overflow:hidden}
+.product img{width:100%;height:200px;object-fit:cover;display:block;background:#f5f5f5}
+.info{padding:12px}
+.info h3{font-size:15px;min-height:36px}
+.price{font-size:19px;font-weight:bold;color:#176b50}
+.old{font-size:12px;text-decoration:line-through;color:#888;margin-left:5px}
+.info button{width:100%;margin-top:12px}
+.promo,.about{text-align:center;padding:30px 6%;background:#f7faf7;margin:20px 0;line-height:1.8}
+footer{background:#183e30;color:white;text-align:center;padding:28px 10px;line-height:2}
+footer a{color:#c8f1d7}
+#cartPanel{display:none;position:fixed;inset:0;background:#0008;z-index:5;align-items:center;justify-content:center;padding:15px}
+.cartbox{background:white;border-radius:16px;padding:20px;width:100%;max-width:440px;max-height:90vh;overflow:auto}
+.cartrow{padding:10px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:8px}
+.cartbox input{width:100%;margin:6px 0;border-radius:9px}
+.whatsapp{position:fixed;bottom:15px;right:15px;background:#20b95a;color:white;padding:13px 17px;border-radius:30px;text-decoration:none;font-weight:bold}
+@media(max-width:650px){
+ .hero{grid-template-columns:1fr}
+ .hero img{height:310px}
+ .hero-text{padding:25px}
+ .categories,.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product img{height:165px}
+ header{padding:13px 4%}
+ nav a{display:inline-block;margin:6px}
+ section{padding:22px 4%}
+}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">🛍️ My Online Shop</div>
-<nav>
-<a href="#home">Home</a><a href="#products">Products</a>
-<a href="#about">About</a><a href="#contact">Contact</a>
-</nav>
+ <div class="logo">My Online Shop</div>
+ <input id="search" placeholder="پروڈکٹ تلاش کریں..." oninput="showProducts()">
+ <button onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button>
 </header>
+<nav>
+ <a href="#">Home</a>
+ <a href="#categories">Categories</a>
+ <a href="#products">Products</a>
+ <a href="#about">About Us</a>
+ <a href="#contact">Contact</a>
+</nav>
 
-<section class="hero" id="home">
-<div class="heroText">
-<p>Welcome to</p>
-<h1>My Online Shop</h1>
-<p>Best Products • Fast Delivery • Easy Shopping</p>
-<button onclick="document.getElementById('products').scrollIntoView()">Shop Now →</button>
+<div class="hero">
+ <div class="hero-text">
+  <p>✨ YOUR STYLE, YOUR CHOICE</p>
+  <h1>خوبصورت انداز، مناسب قیمت!</h1>
+  <p>فیشن، بیوٹی اور روزمرہ استعمال کی مصنوعات ایک ہی جگہ سے خریدیں۔</p>
+  <a class="btn" href="#products">ابھی خریداری کریں</a>
+ </div>
+ <img src="model.jpg" alt="Shop fashion model">
 </div>
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=85" alt="New fashion portrait">
+
+<section id="categories">
+ <h2>Shop by Category</h2>
+ <div class="categories">
+  <div class="category" onclick="category='Fashion';showProducts()"><span>👗</span>Fashion</div>
+  <div class="category" onclick="category='Beauty';showProducts()"><span>💄</span>Beauty</div>
+  <div class="category" onclick="category='Accessories';showProducts()"><span>👜</span>Accessories</div>
+  <div class="category" onclick="category='Home';showProducts()"><span>🏠</span>Home Items</div>
+ </div>
 </section>
-
-<main class="wrap">
-<h2>Shop by Category</h2>
-<div class="categories">
-<div class="cat" onclick="filterCat('Fashion')">👗<p>Fashion</p></div>
-<div class="cat" onclick="filterCat('Electronics')">🎧<p>Electronics</p></div>
-<div class="cat" onclick="filterCat('Home')">🏠<p>Home & Living</p></div>
-<div class="cat" onclick="filterCat('Beauty')">💄<p>Beauty</p></div>
-<div class="cat" onclick="filterCat('All')">🛍️<p>All Products</p></div>
-</div>
 
 <section id="products">
-<h2>Featured Products</h2>
-<input class="search" id="search" placeholder="Search products..." oninput="render()">
-<div class="products" id="list"></div>
+ <h2>Popular Products</h2>
+ <div class="products" id="productGrid"></div>
 </section>
 
-<section id="cart">
-<h2>🛒 Your Cart (<span id="count">0</span>)</h2>
-<div id="cartItems">Your cart is empty.</div>
-<h3>Total: Rs. <span id="total">0</span></h3>
-<button onclick="emptyCart()">Clear Cart</button>
-</section>
-
-<section id="checkout">
-<h2>Place Your Order</h2>
-<input id="customer" placeholder="Your name">
-<input id="phone" placeholder="Your phone number">
-<input id="address" placeholder="Delivery address">
-<button onclick="sendOrder()">Send Order on WhatsApp</button>
-<p>Orders are confirmed through WhatsApp.</p>
-</section>
-
-<section id="about">
-<h2>About Us</h2>
-<div class="about">
-<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=85" alt="Fashion portrait">
-<div><h3>Shopping Made Simple</h3>
-<p>Discover fashion, electronics, beauty products and home essentials at My Online Shop. Browse products and contact us to order.</p></div>
+<div class="promo">
+ <h2>آسانی سے آرڈر کریں!</h2>
+ <p>اپنی پسند کی مصنوعات کارٹ میں شامل کریں اور WhatsApp پر آرڈر بھیجیں۔</p>
+ <a class="btn" href="https://wa.me/923125606225" target="_blank">WhatsApp پر رابطہ کریں</a>
 </div>
+
+<section class="about" id="about">
+ <h2>About My Online Shop</h2>
+ <p>ہم فیشن، بیوٹی، ایکسیسریز اور گھر کے استعمال کی مصنوعات مناسب قیمتوں پر پیش کرنے کے لیے یہ آن لائن شاپ بنا رہے ہیں۔ اپنی پسند کی پروڈکٹ منتخب کریں اور WhatsApp پر آرڈر کی تفصیل بھیجیں۔</p>
 </section>
 
-<section id="contact" class="contact">
-<h2>Need Help?</h2>
-<p>Contact us for product details and orders.</p>
-<button onclick="window.open('https://wa.me/923125606225','_blank')">Contact on WhatsApp</button>
-</section>
-</main>
+<footer id="contact">
+ <h2>My Online Shop</h2>
+ رابطہ: <a href="https://wa.me/923125606225" target="_blank">0312 5606225</a><br>
+ © <span id="year"></span> My Online Shop
+</footer>
 
-<footer>© 2026 My Online Shop • All rights reserved</footer>
+<a class="whatsapp" href="https://wa.me/923125606225" target="_blank">☏ WhatsApp</a>
+
+<div id="cartPanel" onclick="if(event.target===this)closeCart()">
+ <div class="cartbox">
+  <h2>🛒 آپ کا کارٹ</h2>
+  <div id="cartItems"></div>
+  <h3 id="total">کل: Rs 0</h3>
+  <input id="customerName" placeholder="آپ کا نام">
+  <input id="customerPhone" placeholder="موبائل نمبر">
+  <input id="customerAddress" placeholder="مکمل ایڈریس">
+  <p><button onclick="checkout()">WhatsApp پر آرڈر</button>
+  <button onclick="closeCart()" style="background:#777">بند کریں</button></p>
+ </div>
+</div>
 
 <script>
 const products=[
-{id:1,n:"Smart Watch",p:1999,c:"Electronics",e:"⌚"},
-{id:2,n:"Wireless Earbuds",p:1499,c:"Electronics",e:"🎧"},
-{id:3,n:"Ladies Handbag",p:1299,c:"Fashion",e:"👜"},
-{id:4,n:"Sports Shoes",p:1999,c:"Fashion",e:"👟"},
-{id:5,n:"Perfume",p:1199,c:"Beauty",e:"🌸"},
-{id:6,n:"Stylish Dress",p:1599,c:"Fashion",e:"👗"},
-{id:7,n:"Home Decoration",p:899,c:"Home",e:"🏡"},
-{id:8,n:"Sunglasses",p:699,c:"Fashion",e:"🕶️"}
+{id:1,name:"فیشن ڈریس",category:"Fashion",price:799,old:1200,img:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80"},
+{id:2,name:"بیوٹی میک اپ",category:"Beauty",price:299,old:450,img:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80"},
+{id:3,name:"خواتین کا ہینڈ بیگ",category:"Accessories",price:999,old:1400,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"},
+{id:4,name:"اسٹائلش سن گلاسز",category:"Accessories",price:499,old:700,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"},
+{id:5,name:"اسکن کیئر پروڈکٹ",category:"Beauty",price:399,old:550,img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80"},
+{id:6,name:"خواتین کے جوتے",category:"Fashion",price:899,old:1300,img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80"},
+{id:7,name:"گھر کی سجاوٹ",category:"Home",price:499,old:750,img:"https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"},
+{id:8,name:"فیشن ایکسیسری",category:"Accessories",price:299,old:450,img:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=600&q=80"}
 ];
-let cart=[],category="All";
-function render(){
-let q=document.getElementById("search").value.toLowerCase();
-let arr=products.filter(x=>(category==="All"||x.c===category)&&x.n.toLowerCase().includes(q));
-document.getElementById("list").innerHTML=arr.map(x=>`
-<div class="card"><div class="emoji">${x.e}</div><h3>${x.n}</h3>
-<p class="price">Rs. ${x.p}</p><button onclick="add(${x.id})">Add to Cart</button></div>`).join("")||"No products found.";
+let cart=[];
+let category="All";
+
+function showProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>(category==="All"||p.category===category)&&(p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q)));
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`
+ <div class="product">
+ <img src="${p.img}" alt="${p.name}" loading="lazy">
+ <div class="info"><h3>${p.name}</h3>
+ <span class="price">Rs ${p.price}</span> <span class="old">Rs ${p.old}</span>
+ <button onclick="add(${p.id})">🛒 کارٹ میں شامل کریں</button></div>
+ </div>`).join(""):"<p>کوئی پروڈکٹ نہیں ملی۔</p>";
 }
-function filterCat(c){category=c;render();document.getElementById("products").scrollIntoView()}
-function add(id){cart.push(products.find(x=>x.id===id));showCart()}
-function showCart(){
-document.getElementById("count").textContent=cart.length;
-document.getElementById("total").textContent=cart.reduce((s,x)=>s+x.p,0);
-document.getElementById("cartItems").innerHTML=cart.length?cart.map((x,i)=>`${x.n} — Rs. ${x.p} <button onclick="removeItem(${i})">Remove</button>`).join("<hr>"):"Your cart is empty.";
+function add(id){
+ const item=cart.find(p=>p.id===id);
+ if(item)item.qty++;else cart.push({...products.find(p=>p.id===id),qty:1});
+ updateCart();
+ alert("پروڈکٹ کارٹ میں شامل ہوگئی!");
 }
-function removeItem(i){cart.splice(i,1);showCart()}
-function emptyCart(){cart=[];showCart()}
-function sendOrder(){
-let n=document.getElementById("customer").value.trim();
-let p=document.getElementById("phone").value.trim();
-let a=document.getElementById("address").value.trim();
-if(!cart.length)return alert("Please add a product first.");
-if(!n||!p||!a)return alert("Please enter your name, phone and address.");
-let items=cart.map(x=>x.n+" Rs. "+x.p).join("\n");
-let msg=`My Online Shop Order\nName: ${n}\nPhone: ${p}\nAddress: ${a}\nProducts:\n${items}\nTotal: Rs. ${cart.reduce((s,x)=>s+x.p,0)}`;
-window.open("https://wa.me/923125606225?text="+encodeURIComponent(msg),"_blank");
+function updateCart(){
+ document.getElementById("count").textContent=cart.reduce((s,p)=>s+p.qty,0);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(p=>`
+ <div class="cartrow"><span>${p.name} × ${p.qty}</span>
+ <span>Rs ${p.price*p.qty} <button onclick="removeItem(${p.id})">✕</button></span></div>`).join(""):"کارٹ خالی ہے۔";
+ document.getElementById("total").textContent="کل: Rs "+cart.reduce((s,p)=>s+p.price*p.qty,0);
 }
-render();showCart();
+function removeItem(id){cart=cart.filter(p=>p.id!==id);updateCart()}
+function openCart(){updateCart();document.getElementById("cartPanel").style.display="flex"}
+function closeCart(){document.getElementById("cartPanel").style.display="none"}
+function checkout(){
+ if(!cart.length){alert("پہلے کارٹ میں پروڈکٹ شامل کریں۔");return}
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const address=document.getElementById("customerAddress").value.trim();
+ if(!name||!phone||!address){alert("نام، فون نمبر اور ایڈریس لکھیں۔");return}
+ let message="New Online Shop Order%0A";
+ message+="Name: "+encodeURIComponent(name)+"%0A";
+ message+="Phone: "+encodeURIComponent(phone)+"%0A";
+ message+="Address: "+encodeURIComponent(address)+"%0A%0A";
+ cart.forEach(p=>{message+=encodeURIComponent(p.name+" x "+p.qty+" = Rs "+(p.price*p.qty))+"%0A"});
+ message+="%0ATotal: Rs "+cart.reduce((s,p)=>s+p.price*p.qty,0);
+ window.open("https://wa.me/923125606225?text="+message,"_blank");
+}
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")showProducts()});
+showProducts();
 </script>
 </body>
 </html>
+g="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Online Shop</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#26372e;background:#fff}
+header{padding:16px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:23px;font-weight:bold;color:#176b50}
+input{padding:12px;border:1px solid #ddd;border-radius:25px;min-width:0}
+button,.btn{border:0;border-radius:25px;padding:12px 18px;background:#176b50;color:white;cursor:pointer;text-decoration:none;display:inline-block}
+nav{padding:13px;text-align:center;border-top:1px solid #eee;border-bottom:1px solid #eee}
+nav a{margin:0 10px;text-decoration:none;color:#333;font-size:14px}
+.hero{margin:20px auto;width:92%;max-width:1200px;border-radius:20px;overflow:hidden;background:#edf7ef;display:grid;grid-template-columns:1fr 1fr;align-items:center}
+.hero-text{padding:35px}
+.hero h1{font-size:clamp(28px,4vw,48px);color:#176b50}
+.hero p{line-height:1.8;color:#59685e}
+.hero img{width:100%;height:390px;object-fit:cover;object-position:center 25%}
+section{padding:25px 5%}
+h2{margin-top:0}
+.categories,.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.category{background:#edf7ef;text-align:center;padding:23px 8px;border-radius:15px;cursor:pointer}
+.category span{display:block;font-size:30px;margin-bottom:10px}
+.product{border:1px solid #eee;border-radius:15px;overflow:hidden}
+.product img{width:100%;height:200px;object-fit:cover;display:block;background:#f5f5f5}
+.info{padding:12px}
+.info h3{font-size:15px;min-height:36px}
+.price{font-size:19px;font-weight:bold;color:#176b50}
+.old{font-size:12px;text-decoration:line-through;color:#888;margin-left:5px}
+.info button{width:100%;margin-top:12px}
+.promo,.about{text-align:center;padding:30px 6%;background:#f7faf7;margin:20px 0;line-height:1.8}
+footer{background:#183e30;color:white;text-align:center;padding:28px 10px;line-height:2}
+footer a{color:#c8f1d7}
+#cartPanel{display:none;position:fixed;inset:0;background:#0008;z-index:5;align-items:center;justify-content:center;padding:15px}
+.cartbox{background:white;border-radius:16px;padding:20px;width:100%;max-width:440px;max-height:90vh;overflow:auto}
+.cartrow{padding:10px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;gap:8px}
+.cartbox input{width:100%;margin:6px 0;border-radius:9px}
+.whatsapp{position:fixed;bottom:15px;right:15px;background:#20b95a;color:white;padding:13px 17px;border-radius:30px;text-decoration:none;font-weight:bold}
+@media(max-width:650px){
+ .hero{grid-template-columns:1fr}
+ .hero img{height:310px}
+ .hero-text{padding:25px}
+ .categories,.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .product img{height:165px}
+ header{padding:13px 4%}
+ nav a{display:inline-block;margin:6px}
+ section{padding:22px 4%}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">My Online Shop</div>
+ <input id="search" placeholder="پروڈکٹ تلاش کریں..." oninput="showProducts()">
+ <button onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button>
+</header>
+<nav>
+ <a href="#">Home</a>
+ <a href="#categories">Categories</a>
+ <a href="#products">Products</a>
+ <a href="#about">About Us</a>
+ <a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+ <div class="hero-text">
+  <p>✨ YOUR STYLE, YOUR CHOICE</p>
+  <h1>خوبصورت انداز، مناسب قیمت!</h1>
+  <p>فیشن، بیوٹی اور روزمرہ استعمال کی مصنوعات ایک ہی جگہ سے خریدیں۔</p>
+  <a class="btn" href="#products">ابھی خریداری کریں</a>
+ </div>
+ <img src="model.jpg" alt="Shop fashion model">
+</div>
+
+<section id="categories">
+ <h2>Shop by Category</h2>
