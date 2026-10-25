@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World!</h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Online Shop</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fff;color:#15352f}
+header{background:#063d32;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:21px;font-weight:bold}
+header a{color:white;text-decoration:none;margin:5px}
+input,button{padding:11px;border-radius:7px;border:1px solid #ddd}
+button{background:#009967;color:white;border:0;font-weight:bold;cursor:pointer}
+.hero{min-height:350px;padding:35px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#e5f6ed;flex-wrap:wrap}
+.heroText{flex:1;min-width:230px}
+.hero h1{font-size:clamp(32px,5vw,52px);margin:10px 0}
+.hero p{font-size:18px}
+.hero img{width:100%;max-width:390px;height:300px;object-fit:cover;border-radius:18px}
+.wrap{padding:22px 5%;max-width:1200px;margin:auto}
+.search{width:100%;margin:10px 0 20px}
+.categories,.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+.cat,.card{border-radius:12px;padding:14px;background:#f4faf6;text-align:center}
+.cat{cursor:pointer;font-weight:bold}
+.card{background:white;box-shadow:0 2px 12px #0001;text-align:left}
+.emoji{height:100px;display:grid;place-items:center;background:#f0f5f2;border-radius:9px;font-size:53px}
+.card h3{font-size:16px}
+.price{color:#00865a;font-size:18px;font-weight:bold}
+.card button{width:100%}
+#cart{background:#eff9f3;border-radius:12px;padding:18px;margin-top:20px}
+section{scroll-margin-top:15px}
+.about{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.about img{width:100%;max-width:420px;border-radius:14px}
+.about div{flex:1;min-width:220px}
+.contact{padding:25px;background:#e7f8ee;border-radius:12px;text-align:center}
+footer{background:#063d32;color:white;padding:24px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🛍️ My Online Shop</div>
+<nav>
+<a href="#home">Home</a><a href="#products">Products</a>
+<a href="#about">About</a><a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="heroText">
+<p>Welcome to</p>
+<h1>My Online Shop</h1>
+<p>Best Products • Fast Delivery • Easy Shopping</p>
+<button onclick="document.getElementById('products').scrollIntoView()">Shop Now →</button>
+</div>
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=85" alt="New fashion portrait">
+</section>
+
+<main class="wrap">
+<h2>Shop by Category</h2>
+<div class="categories">
+<div class="cat" onclick="filterCat('Fashion')">👗<p>Fashion</p></div>
+<div class="cat" onclick="filterCat('Electronics')">🎧<p>Electronics</p></div>
+<div class="cat" onclick="filterCat('Home')">🏠<p>Home & Living</p></div>
+<div class="cat" onclick="filterCat('Beauty')">💄<p>Beauty</p></div>
+<div class="cat" onclick="filterCat('All')">🛍️<p>All Products</p></div>
+</div>
+
+<section id="products">
+<h2>Featured Products</h2>
+<input class="search" id="search" placeholder="Search products..." oninput="render()">
+<div class="products" id="list"></div>
+</section>
+
+<section id="cart">
+<h2>🛒 Your Cart (<span id="count">0</span>)</h2>
+<div id="cartItems">Your cart is empty.</div>
+<h3>Total: Rs. <span id="total">0</span></h3>
+<button onclick="emptyCart()">Clear Cart</button>
+</section>
+
+<section id="checkout">
+<h2>Place Your Order</h2>
+<input id="customer" placeholder="Your name">
+<input id="phone" placeholder="Your phone number">
+<input id="address" placeholder="Delivery address">
+<button onclick="sendOrder()">Send Order on WhatsApp</button>
+<p>Orders are confirmed through WhatsApp.</p>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<div class="about">
+<img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=800&q=85" alt="Fashion portrait">
+<div><h3>Shopping Made Simple</h3>
+<p>Discover fashion, electronics, beauty products and home essentials at My Online Shop. Browse products and contact us to order.</p></div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2>Need Help?</h2>
+<p>Contact us for product details and orders.</p>
+<button onclick="window.open('https://wa.me/923125606225','_blank')">Contact on WhatsApp</button>
+</section>
+</main>
+
+<footer>© 2026 My Online Shop • All rights reserved</footer>
+
+<script>
+const products=[
+{id:1,n:"Smart Watch",p:1999,c:"Electronics",e:"⌚"},
+{id:2,n:"Wireless Earbuds",p:1499,c:"Electronics",e:"🎧"},
+{id:3,n:"Ladies Handbag",p:1299,c:"Fashion",e:"👜"},
+{id:4,n:"Sports Shoes",p:1999,c:"Fashion",e:"👟"},
+{id:5,n:"Perfume",p:1199,c:"Beauty",e:"🌸"},
+{id:6,n:"Stylish Dress",p:1599,c:"Fashion",e:"👗"},
+{id:7,n:"Home Decoration",p:899,c:"Home",e:"🏡"},
+{id:8,n:"Sunglasses",p:699,c:"Fashion",e:"🕶️"}
+];
+let cart=[],category="All";
+function render(){
+let q=document.getElementById("search").value.toLowerCase();
+let arr=products.filter(x=>(category==="All"||x.c===category)&&x.n.toLowerCase().includes(q));
+document.getElementById("list").innerHTML=arr.map(x=>`
+<div class="card"><div class="emoji">${x.e}</div><h3>${x.n}</h3>
+<p class="price">Rs. ${x.p}</p><button onclick="add(${x.id})">Add to Cart</button></div>`).join("")||"No products found.";
+}
+function filterCat(c){category=c;render();document.getElementById("products").scrollIntoView()}
+function add(id){cart.push(products.find(x=>x.id===id));showCart()}
+function showCart(){
+document.getElementById("count").textContent=cart.length;
+document.getElementById("total").textContent=cart.reduce((s,x)=>s+x.p,0);
+document.getElementById("cartItems").innerHTML=cart.length?cart.map((x,i)=>`${x.n} — Rs. ${x.p} <button onclick="removeItem(${i})">Remove</button>`).join("<hr>"):"Your cart is empty.";
+}
+function removeItem(i){cart.splice(i,1);showCart()}
+function emptyCart(){cart=[];showCart()}
+function sendOrder(){
+let n=document.getElementById("customer").value.trim();
+let p=document.getElementById("phone").value.trim();
+let a=document.getElementById("address").value.trim();
+if(!cart.length)return alert("Please add a product first.");
+if(!n||!p||!a)return alert("Please enter your name, phone and address.");
+let items=cart.map(x=>x.n+" Rs. "+x.p).join("\n");
+let msg=`My Online Shop Order\nName: ${n}\nPhone: ${p}\nAddress: ${a}\nProducts:\n${items}\nTotal: Rs. ${cart.reduce((s,x)=>s+x.p,0)}`;
+window.open("https://wa.me/923125606225?text="+encodeURIComponent(msg),"_blank");
+}
+render();showCart();
+</script>
+</body>
+</html>
